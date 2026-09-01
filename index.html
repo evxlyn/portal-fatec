@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIGA - Perfil do Aluno</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f6f8;
+            color: #202020;
+        }
+
+        /* =========================
+           BARRA SUPERIOR
+        ========================= */
+
+        .topbar {
+            height: 64px;
+            background: #ffffff;
+            border-bottom: 1px solid #e1e5e8;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 32px;
+        }
+
+        /* CENTRO PAULA SOUZA + SIGA */
+
+        .brand-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .cps-logo {
+            width: 38px;
+            height: 38px;
+            object-fit: contain;
+        }
+
+        .siga-logo {
+            font-size: 25px;
+            font-weight: bold;
+            color: #174a7e;
+            letter-spacing: -1px;
+        }
+
+        /* ÁREA DO USUÁRIO */
+
+        .user-area {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            color: #697586;
+            font-size: 14px;
+        }
+
+        .user-name {
+            color: #404850;
+            font-weight: 500;
+        }
+
+        .user-photo {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            object-fit: cover;
+            cursor: pointer;
+            border: 2px solid #e1e5e8;
+        }
+
+
+        /* =========================
+           CONTEÚDO
+        ========================= */
+
+        .container {
+            width: 100%;
+            max-width: 1050px;
+            margin: 0 auto;
+            padding: 32px 24px 50px;
+        }
+
+
+        /* =========================
+           INSTITUIÇÃO
+        ========================= */
+
+        .institution {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .institution h1 {
+            font-size: 18px;
+            font-weight: bold;
+            color: #202020;
+            text-align: center;
+            line-height: 1.3;
+            margin: 0 auto;
+        }
+
+        .institution p {
+            margin-top: 5px;
+            font-size: 12px;
+            color: #7a8694;
+            text-align: center;
+        }
+
+
+        /* =========================
+           DISPONIBILIDADE
+        ========================= */
+
+        .availability-card {
+            background: #ffffff;
+            border: 1px solid #e3e7eb;
+            border-radius: 8px;
+            padding: 20px 22px;
+            margin-bottom: 18px;
+        }
+
+        .availability-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .availability-title {
+            font-size: 15px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .availability-text {
+            font-size: 13px;
+            color: #737d88;
+        }
+
+        .available {
+            background: #e9f6ed;
+            color: #2d7a43;
+            border-radius: 5px;
+            padding: 6px 11px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .history-button {
+            margin-top: 17px;
+            background: none;
+            border: none;
+            color: #18558e;
+            font-size: 13px;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .history-button:hover {
+            text-decoration: underline;
+        }
+
+
+        /* =========================
+           PERFIL
+        ========================= */
+
+        .profile-card {
+            background: #ffffff;
+            border: 1px solid #e3e7eb;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 18px;
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .profile-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            cursor: pointer;
+            border: 2px solid #e1e5e8;
+        }
+
+        .profile-info h2 {
+            font-size: 18px;
+            margin-bottom: 7px;
+        }
+
+        .profile-info p {
+            font-size: 13px;
+            color: #737d88;
+            margin-bottom: 4px;
+        }
+
+        .status {
+            display: inline-block;
+            margin-top: 5px;
+            background: #e9f6ed;
+            color: #2d7a43;
+            border-radius: 4px;
+            padding: 4px 8px;
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+
+        /* =========================
+           SEÇÕES
+        ========================= */
+
+        .section-title {
+            font-size: 15px;
+            font-weight: bold;
+            margin-bottom: 13px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1px;
+            background: #e4e8ec;
+            border: 1px solid #e4e8ec;
+            border-radius: 7px;
+            overflow: hidden;
+            margin-bottom: 22px;
+        }
+
+        .info-item {
+            background: #ffffff;
+            padding: 16px 18px;
+            min-height: 70px;
+        }
+
+        .info-label {
+            font-size: 11px;
+            color: #8a949f;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .info-value {
+            font-size: 13px;
+            color: #30363b;
+            font-weight: 500;
+        }
+
+
+        /* =========================
+           BOTÃO EDITAR
+        ========================= */
+
+        .edit-button {
+            display: inline-block;
+            border: 1px solid #d6dce1;
+            background: #ffffff;
+            color: #18558e;
+            border-radius: 5px;
+            padding: 8px 14px;
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+        .edit-button:hover {
+            background: #f5f8fa;
+        }
+
+
+        /* =========================
+           RODAPÉ
+        ========================= */
+
+        footer {
+            text-align: center;
+            color: #929ba4;
+            font-size: 11px;
+            padding-top: 20px;
+        }
+
+
+        /* =========================
+           MODAL
+        ========================= */
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.48);
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+
+        /* =========================
+           CARTEIRINHA
+        ========================= */
+
+        .id-card {
+            width: 380px;
+            max-width: 100%;
+            background: #ffffff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.22);
+            position: relative;
+        }
+
+        .id-card-header {
+            background: #174a7e;
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .id-card-header h2 {
+            font-size: 17px;
+            margin-bottom: 5px;
+        }
+
+        .id-card-header p {
+            font-size: 11px;
+            opacity: 0.9;
+        }
+
+        .close-button {
+            position: absolute;
+            right: 14px;
+            top: 12px;
+            width: 30px;
+            height: 30px;
+            border: none;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.18);
+            color: #ffffff;
+            font-size: 19px;
+            cursor: pointer;
+        }
+
+        .id-card-content {
+            padding: 22px;
+            text-align: center;
+        }
+
+        .id-photo {
+            display: block;
+            width: 150px;
+            height: 180px;
+            object-fit: cover;
+            margin: 0 auto 18px;
+            border-radius: 6px;
+            border: 1px solid #dce1e5;
+        }
+
+        .id-name {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 6px;
+        }
+
+        .id-ra {
+            font-size: 12px;
+            color: #77818b;
+            margin-bottom: 18px;
+        }
+
+        .id-data {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            text-align: left;
+        }
+
+        .id-data-item {
+            border: 1px solid #e2e6e9;
+            border-radius: 5px;
+            padding: 10px;
+        }
+
+        .id-data-label {
+            display: block;
+            color: #89939d;
+            font-size: 9px;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .id-data-value {
+            font-size: 11px;
+            color: #30363b;
+            font-weight: 500;
+        }
+
+        .id-card-footer {
+            background: #f5f7f9;
+            padding: 12px;
+            text-align: center;
+            color: #89939d;
+            font-size: 9px;
+        }
+
+
+        /* =========================
+           RESPONSIVO
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            .topbar {
+                padding: 0 16px;
+            }
+
+            .user-area {
+                gap: 10px;
+            }
+
+            .user-name {
+                display: none;
+            }
+
+            .container {
+                padding: 25px 15px 40px;
+            }
+
+            .institution h1 {
+                font-size: 16px;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .availability-top {
+                align-items: flex-start;
+            }
+
+            .profile-header {
+                align-items: flex-start;
+            }
+
+            .profile-avatar {
+                width: 70px;
+                height: 70px;
+            }
+
+            .id-card {
+                width: 350px;
+            }
+
+            .cps-logo {
+                width: 34px;
+                height: 34px;
+            }
+
+            .siga-logo {
+                font-size: 22px;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         BARRA SUPERIOR
+    ========================= -->
+
+    <header class="topbar">
+
+        <div class="brand-area">
+
+            <!--
+                COLOQUE O ARQUIVO cps-img.png
+                NA MESMA PASTA DO index.html
+            -->
+
+            <img
+                src="cps-img.png"
+                class="cps-logo"
+                alt="Centro Paula Souza"
+            >
+
+            <div class="siga-logo">
+                siga
+            </div>
+
+        </div>
+
+
+        <div class="user-area">
+
+            <span></span>
+
+            <span></span>
+
+            <span class="user-name">
+                Olá, GABRIEL
+            </span>
+
+            <!-- FOTO DO GABRIEL -->
+
+            <img
+                src="foto-gabriel.png"
+                class="user-photo"
+                onclick="abrirCarteirinha()"
+                alt="Foto de Gabriel"
+            >
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =========================
+         CONTEÚDO PRINCIPAL
+    ========================= -->
+
+    <main class="container">
+
+
+        <!-- INSTITUIÇÃO -->
+
+        <section class="institution">
+
+            <h1>
+                <strong>
+                    Faculdade de Tecnologia de São José dos Campos - Professor Jessen Vidal
+                </strong>
+            </h1>
+
+            <p>
+                Sistema Integrado de Gestão Acadêmica
+            </p>
+
+        </section>
+
+
+
+        <!-- DISPONIBILIDADE -->
+
+        <section class="availability-card">
+
+            <div class="availability-top">
+
+                <div>
+
+                    <div class="availability-title">
+                        Disponível
+                    </div>
+
+                    <div class="availability-text">
+                        Consultas liberadas para sua situação
+                    </div>
+
+                </div>
+
+
+                <span class="available">
+                    DISPONÍVEL
+                </span>
+
+            </div>
+
+
+            <button
+                class="history-button"
+                onclick="abrirHistorico()"
+            >
+                Histórico
+            </button>
+
+        </section>
+
+
+
+        <!-- PERFIL -->
+
+        <section class="profile-card">
+
+            <div class="profile-header">
+
+
+                <!-- FOTO DO GABRIEL -->
+
+                <img
+                    src="foto-gabriel.png"
+                    class="profile-avatar"
+                    onclick="abrirCarteirinha()"
+                    alt="Foto de Gabriel"
+                >
+
+
+                <div class="profile-info">
+
+                    <h2>
+                        GABRIEL HENRIQUE NOGUEIRA DE SOUZA
+                    </h2>
+
+                    <p>
+                        RA: 2415839074261
+                    </p>
+
+                    <span class="status">
+                        ATIVO
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             INFORMAÇÕES ACADÊMICAS
+        ========================= -->
+
+        <section>
+
+            <div class="section-title">
+                Informações acadêmicas
+            </div>
+
+
+            <div class="info-grid">
+
+
+                <div class="info-item">
+
+                    <div class="info-label">
+                        Instituição
+                    </div>
+
+                    <div class="info-value">
+                        FATEC Jessen Vidal
+                    </div>
+
+                </div>
+
+
+                <div class="info-item">
+
+                    <div class="info-label">
+                        Curso
+                    </div>
+
+                    <div class="info-value">
+                        Logística
+                    </div>
+
+                </div>
+
+
+                <div class="info-item">
+
+                    <div class="info-label">
+                        Semestre atual
+                    </div>
+
+                    <div class="info-value">
+                        5º semestre
+                    </div>
+
+                </div>
+
+
+                <div class="info-item">
+
+                    <div class="info-label">
+                        Período
+                    </div>
+
+                    <div class="info-value">
+                        5º período
+                    </div>
+
+                </div>
+
+
+                <div class="info-item">
+
+                    <div class="info-label">
+                        Modalidade
+                    </div>
+
+                    <div class="info-value">
+                        Tecnólogo
+                    </div>
+
+                </div>
+
+
+                <div class="info-item">
+
+                    <div class="info-label">
+                        Turno
+                    </div>
+
+                    <div class="info-value">
+                        Noturno
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             DADOS PESSOAIS
+        ========================= -->
+
+        <section>
+
+            <div class="section-title">
+                Dados pessoais
+            </div>
+
+
+            <div class="info-grid">
+
+
+                <div class="info-item">
+
+                    <div class="info-label">
+                        Nome completo
+                    </div>
+
+                    <div class="info-value">
+                        GABRIEL HENRIQUE NOGUEIRA DE SOUZA
+                    </div>
+
+                </div>
+
+
+                <div class="info-item">
+
+                    <div class="info-label">
+                        Data de nascimento
+                    </div>
+
+                    <div class="info-value">
+                        28/04/2002
+                    </div>
+
+                </div>
+
+
+                <div class="info-item">
+
+                    <div class="info-label">
+                        CPF
+                    </div>
+
+                    <div class="info-value">
+                        489.808.258-03
+                    </div>
+
+                </div>
+
+
+                <div class="info-item">
+
+                    <div class="info-label">
+                        Telefone
+                    </div>
+
+                    <div class="info-value">
+                        (12) 99156-3243
+                    </div>
+
+                </div>
+
+
+                <div class="info-item">
+
+                    <div class="info-label">
+                        E-mail institucional
+                    </div>
+
+                    <div class="info-value">
+                        gabriel.nog@fatec.sp.gov.br
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <button
+                class="edit-button"
+                onclick="editarPerfil()"
+            >
+                Editar perfil
+            </button>
+
+        </section>
+
+
+
+        <!-- RODAPÉ -->
+
+        <footer>
+            Sistema Integrado de Gestão Acadêmica
+        </footer>
+
+    </main>
+
+
+
+    <!-- =========================
+         MODAL / CARTEIRINHA
+    ========================= -->
+
+    <div
+        class="modal"
+        id="carteirinhaModal"
+        onclick="fecharModalFora(event)"
+    >
+
+
+        <div class="id-card">
+
+
+            <!-- CABEÇALHO -->
+
+            <div class="id-card-header">
+
+                <button
+                    class="close-button"
+                    onclick="fecharCarteirinha()"
+                >
+                    ×
+                </button>
+
+                <h2>
+                    FATEC Jessen Vidal
+                </h2>
+
+                <p>
+                    Identificação do aluno
+                </p>
+
+            </div>
+
+
+
+            <!-- CONTEÚDO DA CARTEIRINHA -->
+
+            <div class="id-card-content">
+
+
+                <!-- FOTO GRANDE -->
+
+                <img
+                    src="foto-gabriel.png"
+                    class="id-photo"
+                    alt="Foto de Gabriel"
+                >
+
+
+                <div class="id-name">
+                    GABRIEL HENRIQUE NOGUEIRA DE SOUZA
+                </div>
+
+
+                <div class="id-ra">
+                    RA: 2415839074261
+                </div>
+
+
+
+                <div class="id-data">
+
+
+                    <div class="id-data-item">
+
+                        <span class="id-data-label">
+                            CPF
+                        </span>
+
+                        <span class="id-data-value">
+                            489.808.258-03
+                        </span>
+
+                    </div>
+
+
+                    <div class="id-data-item">
+
+                        <span class="id-data-label">
+                            Curso
+                        </span>
+
+                        <span class="id-data-value">
+                            Logística
+                        </span>
+
+                    </div>
+
+
+                    <div class="id-data-item">
+
+                        <span class="id-data-label">
+                            Turno
+                        </span>
+
+                        <span class="id-data-value">
+                            Noturno
+                        </span>
+
+                    </div>
+
+
+                    <div class="id-data-item">
+
+                        <span class="id-data-label">
+                            Status
+                        </span>
+
+                        <span class="id-data-value">
+                            Ativo
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+
+            <!-- RODAPÉ DA CARTEIRINHA -->
+
+            <div class="id-card-footer">
+
+                Faculdade de Tecnologia de São José dos Campos - Professor Jessen Vidal
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
+    <script>
+
+        function abrirCarteirinha() {
+
+            document
+                .getElementById("carteirinhaModal")
+                .classList.add("active");
+
+        }
+
+
+        function fecharCarteirinha() {
+
+            document
+                .getElementById("carteirinhaModal")
+                .classList.remove("active");
+
+        }
+
+
+        function fecharModalFora(event) {
+
+            if (event.target.id === "carteirinhaModal") {
+
+                fecharCarteirinha();
+
+            }
+
+        }
+
+
+        function abrirHistorico() {
+
+            alert(
+                "Histórico acadêmico disponível para consulta."
+            );
+
+        }
+
+
+        function editarPerfil() {
+
+            alert(
+                "A edição de perfil está disponível apenas para demonstração."
+            );
+
+        }
+
+
+        document.addEventListener(
+            "keydown",
+            function(event) {
+
+                if (event.key === "Escape") {
+
+                    fecharCarteirinha();
+
+                }
+
+            }
+        );
+
+    </script>
+
+
+</body>
+</html>
